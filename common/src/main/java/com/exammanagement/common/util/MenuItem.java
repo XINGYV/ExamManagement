@@ -4,102 +4,106 @@ import java.io.Serializable;
 import java.util.LinkedHashMap;
 
 public class MenuItem implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6302881094214911822L;
-	private String menuId;
-	private String menuHref;
-	private String menuName;
-	private int menuSeq;
-	private String authority;
-	private String parentId;
-	private String icon;
-	private boolean visiable;
-	public boolean isVisiable() {
-		return visiable;
-	}
+    /**
+     *
+     */
+    private static final long serialVersionUID = 6302881094214911822L;
+    private String menuId;
+    private String menuHref;
+    private String menuName;
+    private int menuSeq;
+    private String authority;
+    private String parentId;
+    private String icon;
+    private boolean visiable;
 
-	public void setVisiable(boolean visiable) {
-		this.visiable = visiable;
-	}
-	private LinkedHashMap<String,MenuItem> childMap;
+    public boolean isVisiable() {
+        return visiable;
+    }
 
-	public String getIcon() {
-		return icon;
-	}
+    public void setVisiable(boolean visiable) {
+        this.visiable = visiable;
+    }
 
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
+    private LinkedHashMap<String, MenuItem> childMap;
 
-	public LinkedHashMap<String, MenuItem> getChildMap() {
-		return childMap;
-	}
+    public String getIcon() {
+        return icon;
+    }
 
-	public void setChildMap(LinkedHashMap<String, MenuItem> childMap) {
-		this.childMap = childMap;
-	}
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
-	public String getMenuId() {
-		return menuId;
-	}
+    public LinkedHashMap<String, MenuItem> getChildMap() {
+        return childMap;
+    }
 
-	public void setMenuId(String menuId) {
-		this.menuId = menuId;
-	}
+    public void setChildMap(LinkedHashMap<String, MenuItem> childMap) {
+        this.childMap = childMap;
+    }
 
-	public String getMenuHref() {
-		return menuHref;
-	}
+    public String getMenuId() {
+        return menuId;
+    }
 
-	public void setMenuHref(String menuHref) {
-		this.menuHref = menuHref;
-	}
+    public void setMenuId(String menuId) {
+        this.menuId = menuId;
+    }
 
-	public String getMenuName() {
-		return menuName;
-	}
+    public String getMenuHref() {
+        return menuHref;
+    }
 
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
-	}
+    public void setMenuHref(String menuHref) {
+        this.menuHref = menuHref;
+    }
 
-	public int getMenuSeq() {
-		return menuSeq;
-	}
+    public String getMenuName() {
+        return menuName;
+    }
 
-	public void setMenuSeq(int menuSeq) {
-		this.menuSeq = menuSeq;
-	}
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
 
-	public String getAuthority() {
-		return authority;
-	}
+    public int getMenuSeq() {
+        return menuSeq;
+    }
 
-	public void setAuthority(String authority) {
-		this.authority = authority;
-	}
+    public void setMenuSeq(int menuSeq) {
+        this.menuSeq = menuSeq;
+    }
 
-	public String getParentId() {
-		return parentId;
-	}
+    public String getAuthority() {
+        return authority;
+    }
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
 
-	public MenuItem(){}
-	public MenuItem(String menuId, String menuHref, String menuName, int menuSeq, String authority, String parentId,
-			String icon) {
-		super();
-		this.menuId = menuId;
-		this.menuHref = menuHref;
-		this.menuName = menuName;
-		this.menuSeq = menuSeq;
-		this.authority = authority;
-		this.parentId = parentId;
-		this.icon = icon;
-	}
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    public MenuItem() {
+    }
+
+    public MenuItem(String menuId, String menuHref, String menuName, int menuSeq, String authority, String parentId,
+                    String icon) {
+        super();
+        this.menuId = menuId;
+        this.menuHref = menuHref;
+        this.menuName = menuName;
+        this.menuSeq = menuSeq;
+        this.authority = authority;
+        this.parentId = parentId;
+        this.icon = icon;
+    }
 
 }

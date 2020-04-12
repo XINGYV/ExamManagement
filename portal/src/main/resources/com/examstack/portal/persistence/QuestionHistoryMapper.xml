@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.examstack.portal.persistence.QuestionHistoryMapper">
 
-	<insert id="addUserQuestionHist"
-		parameterType="com.exammanagement.common.domain.exam.UserQuestionHistory">
-		replace into
-		et_user_question_history(question_id,user_id,question_type_id,is_right)
-		values
-		<foreach collection="array" item="item" separator=",">
-			(#{item.questionId},#{item.userId},#{item.questionTypeId},#{item.right})
-		</foreach>
+    <insert id="addUserQuestionHist"
+            parameterType="com.exammanagement.common.domain.exam.UserQuestionHistory">
+        replace into
+        et_user_question_history(question_id,user_id,question_type_id,is_right)
+        values
+        <foreach collection="array" item="item" separator=",">
+            (#{item.questionId},#{item.userId},#{item.questionTypeId},#{item.right})
+        </foreach>
 
-	</insert>
+    </insert>
 
-	<select id="getUserQuestionHist"
-		resultType="com.exammanagement.common.domain.exam.UserQuestionHistory">
+    <select id="getUserQuestionHist"
+            resultType="com.exammanagement.common.domain.exam.UserQuestionHistory">
 		select a.question_id questionId,a.user_id userId,a.is_right
 		"right",a.question_type_id questionTypeId,c.point_id
 		pointId,c.point_name pointName,d.field_id
@@ -31,8 +31,8 @@
 		d.field_id=#{fieldId}
 	</select>
 
-	<select id="getQuestionHistStaticByFieldId"
-		resultType="com.exammanagement.common.domain.question.QuestionStatistic">
+    <select id="getQuestionHistStaticByFieldId"
+            resultType="com.exammanagement.common.domain.question.QuestionStatistic">
 		select c.field_id fieldId,c.point_id pointId,c.point_name
 		pointName,sum(1) amount,sum(case when a.is_right=1 then 1 else 0 end)
 		rightAmount,
@@ -44,8 +44,8 @@
 		a.user_id=#{userId} group by c.field_id,c.point_id,c.point_name
 	</select>
 
-	<select id="getTypeQuestionHistStaticByFieldId"
-		resultType="com.exammanagement.common.domain.question.QuestionStatistic">
+    <select id="getTypeQuestionHistStaticByFieldId"
+            resultType="com.exammanagement.common.domain.question.QuestionStatistic">
 		select c.field_id fieldId,c.point_id pointId,c.point_name
 		pointName,a.question_type_id questionTypeId,sum(1) amount,sum(case when a.is_right=1 then 1 else 0 end)
 		rightAmount,

@@ -4,10 +4,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 
 public class UserInfoUtil {
-	public static UserInfo getUserInfo(){
-		UserInfo userInfo=(UserInfo)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return userInfo;
-	}
+    public static UserInfo getUserInfo() {
+        UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userInfo;
+    }
 	/*public static void main(String[] args){
 		List<Question> initList= new ArrayList<Question>();
 		List<Question> resultList= new ArrayList<Question>();
@@ -20,8 +20,6 @@ public class UserInfoUtil {
 		System.out.println("生成之后："+resultList);
 		
 	}*/
-	
-	
-	
-	
+
+
 }

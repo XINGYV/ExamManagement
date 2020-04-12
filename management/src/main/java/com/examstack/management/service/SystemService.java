@@ -1,13 +1,12 @@
 package com.examstack.management.service;
 
-import java.util.LinkedHashMap;
-
+import com.exammanagement.common.util.MenuItem;
 import org.springframework.stereotype.Service;
 
-import com.exammanagement.common.util.MenuItem;
+import java.util.LinkedHashMap;
 
 @Service
 public interface SystemService {
 
-	public LinkedHashMap<String,MenuItem> getMenuItemsByAuthority(String authority);
+    public LinkedHashMap<String, MenuItem> getMenuItemsByAuthority(String authority);
 }

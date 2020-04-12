@@ -1,11 +1,10 @@
 package com.examstack.portal.persistence;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.exammanagement.common.domain.question.Comment;
 import com.exammanagement.common.util.Page;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 
 /**
@@ -14,14 +13,15 @@ import com.exammanagement.common.util.Page;
  */
 public interface CommentMapper {
 
-	List<Comment> getCommentByTypeAndReferId(@Param("commentType") int commentType,@Param("referId") int referId,@Param("indexId") int indexId,
-			@Param("page") Page<Comment> page);
-	
-	/**
-	 * 添加评论
-	 * @param comment
-	 */
-	public void addComment(Comment comment);
-	
-	public Integer getMaxCommentIndexByTypeAndReferId(@Param("commentType") int commentType,@Param("referId") int referId);
+    List<Comment> getCommentByTypeAndReferId(@Param("commentType") int commentType, @Param("referId") int referId, @Param("indexId") int indexId,
+                                             @Param("page") Page<Comment> page);
+
+    /**
+     * 添加评论
+     *
+     * @param comment
+     */
+    public void addComment(Comment comment);
+
+    public Integer getMaxCommentIndexByTypeAndReferId(@Param("commentType") int commentType, @Param("referId") int referId);
 }

@@ -6,10 +6,10 @@ import java.util.Date;
 public class Tag implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 4266590307234837998L;
-	private int tagId;
+     *
+     */
+    private static final long serialVersionUID = 4266590307234837998L;
+    private int tagId;
     private String tagName;
     private Date createTime;
     private int creator;
@@ -18,14 +18,14 @@ public class Tag implements Serializable {
     private String memo;
 
     public String getCreatorName() {
-		return creatorName;
-	}
+        return creatorName;
+    }
 
-	public void setCreatorName(String creatorName) {
-		this.creatorName = creatorName;
-	}
+    public void setCreatorName(String creatorName) {
+        this.creatorName = creatorName;
+    }
 
-	public int getCreator() {
+    public int getCreator() {
         return creator;
     }
 

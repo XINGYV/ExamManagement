@@ -1,37 +1,36 @@
 package com.exammanagement.common.util.file;
 
-import java.io.File;
-import java.net.ConnectException;
-import java.util.Date;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.artofsolving.jodconverter.DocumentConverter;
 import com.artofsolving.jodconverter.openoffice.connection.OpenOfficeConnection;
 import com.artofsolving.jodconverter.openoffice.connection.SocketOpenOfficeConnection;
 import com.artofsolving.jodconverter.openoffice.converter.OpenOfficeDocumentConverter;
 
-public class JOD4DocToPDF{
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.net.ConnectException;
+import java.util.Date;
 
-	private File inputFile;// 需要转换的文件 
+public class JOD4DocToPDF {
+
+    private File inputFile;// 需要转换的文件
     private File outputFile;// 输出的文件
-    
-	public JOD4DocToPDF(){
-    	
+
+    public JOD4DocToPDF() {
+
     }
+
     public JOD4DocToPDF(File inputFile, File outputFile) {
         this.inputFile = inputFile;
         this.outputFile = outputFile;
     }
-    
+
     /**
-     * 
      * @return
-     * @throws ConnectException 
+     * @throws ConnectException
      */
     public boolean docToPdf(HttpServletRequest request) throws ConnectException {
-    	
-    	Date start = new Date();
+
+        Date start = new Date();
     	/*//打开端口
     	String path = request.getSession()
 				.getServletContext().getRealPath("/WEB-INF/classes/OpenOffice_Service.bat");
@@ -62,7 +61,7 @@ public class JOD4DocToPDF{
 		}*/
 
         // connect to an OpenOffice.org instance running on port 8100
-    	//Process pro = Runtime.getRuntime().e
+        //Process pro = Runtime.getRuntime().e
         OpenOfficeConnection connection = new SocketOpenOfficeConnection(8100);
         try {
             connection.connect();
@@ -75,16 +74,16 @@ public class JOD4DocToPDF{
                 connection = null;
             }
             throw cex;
-            
-        } catch(IllegalArgumentException e){
-        	throw new IllegalArgumentException("文件类型错误！上传文档格式不要高于office2003");
+
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("文件类型错误！上传文档格式不要高于office2003");
         }
-        
+
         if (connection != null) {
             connection.disconnect();
             connection = null;
         }
-        
+
         long l = (start.getTime() - new Date().getTime());
         long day = l / (24 * 60 * 60 * 1000);
         long hour = (l / (60 * 60 * 1000) - day * 24);
@@ -94,22 +93,22 @@ public class JOD4DocToPDF{
                 + "秒");
         return true;
     }
-    
+
     public File getInputFile() {
         return inputFile;
     }
-    
+
     public void setInputFile(File inputFile) {
         this.inputFile = inputFile;
     }
-    
+
     public File getOutputFile() {
         return outputFile;
     }
-    
+
     public void setOutputFile(File outputFile) {
         this.outputFile = outputFile;
     }
-    
-    
+
+
 }

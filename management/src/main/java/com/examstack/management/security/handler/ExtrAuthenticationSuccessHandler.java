@@ -1,16 +1,15 @@
 package com.examstack.management.security.handler;
 
-import java.io.IOException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.WebAttributes;
+import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.WebAttributes;
-import org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import java.io.IOException;
 
 /**
  * <tt>AuthenticationSuccessHandler</tt> which can be configured with a default URL which users should be
@@ -28,6 +27,7 @@ public class ExtrAuthenticationSuccessHandler extends AbstractAuthenticationTarg
 
     /**
      * Constructor which sets the <tt>defaultTargetUrl</tt> property of the base class.
+     *
      * @param defaultTargetUrl the URL to which the user should be redirected on successful authentication.
      */
     public ExtrAuthenticationSuccessHandler(String defaultTargetUrl) {
@@ -39,7 +39,7 @@ public class ExtrAuthenticationSuccessHandler extends AbstractAuthenticationTarg
      * then calls {@code clearAuthenticationAttributes()} to remove any leftover session data.
      */
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-            Authentication authentication) throws IOException, ServletException {
+                                        Authentication authentication) throws IOException, ServletException {
 
         handle(request, response, authentication);
 //        String language = request.getParameter("j_language");

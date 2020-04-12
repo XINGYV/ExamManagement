@@ -3,26 +3,26 @@ package com.exammanagement.common.domain.question;
 import java.io.Serializable;
 import java.util.List;
 
-public class Comments implements Serializable  {
+public class Comments implements Serializable {
 
-	private static final long serialVersionUID = -515766630713170465L;
-	private List<Comment> comments = null;
-	private int size;
+    private static final long serialVersionUID = -515766630713170465L;
+    private List<Comment> comments = null;
+    private int size;
 
-	public int getSize() {
-		return size;
-	}
+    public int getSize() {
+        return size;
+    }
 
-	public void setSize(int size) {
-		this.size = size;
-	}
+    public void setSize(int size) {
+        this.size = size;
+    }
 
-	public List<Comment> getComments() {
-		return comments;
-	}
+    public List<Comment> getComments() {
+        return comments;
+    }
 
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
 }

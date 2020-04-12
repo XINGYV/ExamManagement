@@ -22,12 +22,12 @@ class Morris.Donut extends Morris.EventEmitter
       '#052C48'
       '#042135'
     ],
-    backgroundColor: '#FFFFFF', 
+    backgroundColor: '#FFFFFF',
     labelColor: '#000000',
     formatter: Morris.commas
 
-  # Create and render a donut chart.
-  #
+# Create and render a donut chart.
+#
   constructor: (options) ->
     if not (this instanceof Morris.Donut)
       return new Morris.Donut(options)
@@ -50,10 +50,10 @@ class Morris.Donut extends Morris.EventEmitter
 
     @redraw()
 
-  # Clear and redraw the chart.
-  #
-  # If you need to re-size your charts, call this method after changing the
-  # size of the container element.
+# Clear and redraw the chart.
+#
+# If you need to re-size your charts, call this method after changing the
+# size of the container element.
   redraw: ->
     @el.empty()
 
@@ -75,7 +75,7 @@ class Morris.Donut extends Morris.EventEmitter
     for value, i in @values
       next = last + min + C * (value / total)
       seg = new Morris.DonutSegment(
-        cx, cy, w*2, w, last, next,
+        cx, cy, w * 2, w, last, next,
         @options.colors[idx % @options.colors.length],
         @options.backgroundColor, idx, @raphael)
       seg.render()
@@ -96,11 +96,11 @@ class Morris.Donut extends Morris.EventEmitter
         break
       idx += 1
 
-  # @private
+# @private
   click: (idx) =>
     @fire 'click', idx, @data[idx]
 
-  # Select the segment at the given index.
+# Select the segment at the given index.
   select: (idx) =>
     s.deselect() for s in @segments
     segment = @segments[idx]
@@ -108,7 +108,7 @@ class Morris.Donut extends Morris.EventEmitter
     row = @data[idx]
     @setLabels(row.label, @options.formatter(row.value, row))
 
-  # @private
+# @private
   setLabels: (label1, label2) ->
     inner = (Math.min(@el.width() / 2, @el.height() / 2) - 10) * 2 / 3
     maxWidth = 1.8 * inner
@@ -117,7 +117,8 @@ class Morris.Donut extends Morris.EventEmitter
     @text1.attr(text: label1, transform: '')
     text1bbox = @text1.getBBox()
     text1scale = Math.min(maxWidth / text1bbox.width, maxHeightTop / text1bbox.height)
-    @text1.attr(transform: "S#{text1scale},#{text1scale},#{text1bbox.x + text1bbox.width / 2},#{text1bbox.y + text1bbox.height}")
+    @text1.attr(
+      transform: "S#{text1scale},#{text1scale},#{text1bbox.x + text1bbox.width / 2},#{text1bbox.y + text1bbox.height}")
     @text2.attr(text: label2, transform: '')
     text2bbox = @text2.getBBox()
     text2scale = Math.min(maxWidth / text2bbox.width, maxHeightBottom / text2bbox.height)
@@ -157,23 +158,23 @@ class Morris.DonutSegment extends Morris.EventEmitter
     [ox0, oy0, ox1, oy1] = @calcArcPoints(r2)
     return (
       "M#{ix0},#{iy0}" +
-      "A#{r1},#{r1},0,#{@is_long},0,#{ix1},#{iy1}" +
-      "L#{ox1},#{oy1}" +
-      "A#{r2},#{r2},0,#{@is_long},1,#{ox0},#{oy0}" +
-      "Z")
+        "A#{r1},#{r1},0,#{@is_long},0,#{ix1},#{iy1}" +
+        "L#{ox1},#{oy1}" +
+        "A#{r2},#{r2},0,#{@is_long},1,#{ox0},#{oy0}" +
+        "Z")
 
   calcArc: (r) ->
     [ix0, iy0, ix1, iy1] = @calcArcPoints(r)
     return (
       "M#{ix0},#{iy0}" +
-      "A#{r},#{r},0,#{@is_long},0,#{ix1},#{iy1}")
+        "A#{r},#{r},0,#{@is_long},0,#{ix1},#{iy1}")
 
   render: ->
     @arc = @drawDonutArc(@hilight, @color)
     @seg = @drawDonutSegment(
-      @path, 
-      @color, 
-      @backgroundColor, 
+      @path,
+      @color,
+      @backgroundColor,
       => @fire('hover', @index),
       => @fire('click', @index)
     )
